@@ -2,22 +2,20 @@
 
 package:
   name: thinkx
-  version: "{{ version }}"
+  version:"{{ version }}
 
 source:
-  fn: thinkx-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/t/thinkx/thinkx-{{ version }}.tar.gz
-  md5: ecf670a73b753adc6be255b1799fa3c2
+  sha256: 1842dede9a25168d61d358bdcab611a5be5e3cff43cbb4704810e53a7fae3988
 
 build:
-  number: 1000
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 1001
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   build:
     - python
-    - setuptools
-
+    - pip
   run:
     - python
     - matplotlib
@@ -36,6 +34,7 @@ test:
 
 about:
   home: http://github.com/AllenDowney/ThinkX
+  # the package is MIT but there is no license file upstream, many of the .py files are GPL-3.0 though
   license: MIT
   summary: 'Modules supporting books by Allen Downey'
 
